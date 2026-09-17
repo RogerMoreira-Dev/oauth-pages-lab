@@ -151,12 +151,11 @@ export async function onRequestGet(context) {
      VALUES (?, ?, ?, ?, ?, ?, ?)`
   ).bind(sessionHash, issuer, subject, email, displayName, sessionExpiresAt, now).run();
 
-  return new Response(null, {
-    status: 302,
-    headers: {
-      "Location": baseUrl,
-      "Set-Cookie": setSessionCookie(sessionValue),
-      "Cache-Control": "no-store",
-    },
-  });
+    const headers = new Headers();
+  headers.set("Location", baseUrl);
+  headers.append("Set-Cookie", setSessionCookie(sessionValue));
+  headers.append("Set-Cookie", clearTxCookie());
+  headers.set("Cache-Control", "no-store");
+
+  return new Response(null, { status: 302, headers });
 }
