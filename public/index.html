@@ -4,23 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laboratório de autenticação</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <main>
-    <h1>Laboratório de autenticação</h1>
-
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <main class="panel">
+    <h1>LABORATÓRIO<span>DE AUTENTICAÇÃO</span></h1>
     <p id="status">A sessão ainda não foi consultada.</p>
 
-    <p>
-      <a href="/oauth/login/google">Entrar com Google</a>
-    </p>
+    <div class="actions">
+      <a href="/oauth/login/google" class="btn btn-google">
+        <span>Entrar com Google</span>
+      </a>
+      <a href="/oauth/login/github" class="btn btn-github">
+        <span>Entrar com GitHub</span>
+      </a>
+    </div>
 
-    <p>
-      <a href="/oauth/login/github">Entrar com GitHub</a>
-    </p>
-
-    <form method="post" action="/oauth/logout">
-      <button type="submit">Sair</button>
+    <form method="post" action="/oauth/logout" class="logout-form">
+      <button type="submit" class="btn btn-logout">Sair</button>
     </form>
   </main>
 
